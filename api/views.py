@@ -58,7 +58,7 @@ def register_user(request):
             phone=phone,
             account_number=account_number,
             # Initial balance of 1000 NGN for testing
-            account_balance=1000.00
+            account_balance=50000.00
         )
         
         # Generate authentication token
