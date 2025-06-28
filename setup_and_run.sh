@@ -1,7 +1,33 @@
 #!/bin/bash
 
 # Navigate to the backend directory
-cd /workspaces/codespaces-react/backend
+# Check if Python is installed
+if ! command -v python &> /dev/null; then
+    echo "Python is not installed. Please install Python first."
+    exit 1
+fi
+
+# Navigate to the project root
+cd "$(dirname "$0")"
+
+# Create and activate virtual environment
+echo "Setting up virtual environment..."
+if [ ! -d "venv" ]; then
+    python -m venv venv
+    echo "Virtual environment created."
+fi
+
+# Activate virtual environment (works for both Windows and Unix-like systems)
+if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then
+    source venv/Scripts/activate
+else
+    source venv/bin/activate
+fi
+
+# Install required packages
+echo "Installing required packages..."
+pip install -r requirements.txt
+
 
 # Make migrations for the database
 echo "Making migrations..."

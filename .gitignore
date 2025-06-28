@@ -33,7 +33,7 @@ wheels/
 # Virtual Environment
 venv/
 ENV/
-env/
+apienv/
 .env
 
 # IDE
