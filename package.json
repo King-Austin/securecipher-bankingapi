@@ -1,0 +1,59 @@
+{
+  "name": "securecipher-banking-api",
+  "version": "1.0.0",
+  "description": "SecureCipher Banking API - Django Backend Service",
+  "private": true,
+  "scripts": {
+    "install-deps": "pip install -r requirements.txt",
+    "install-dev": "pip install -r requirements.txt && pip install django-debug-toolbar pytest pytest-django black flake8",
+    "makemigrations": "python manage.py makemigrations",
+    "migrate": "python manage.py migrate",
+    "runserver": "python manage.py runserver 0.0.0.0:8000",
+    "runserver-dev": "python manage.py runserver 127.0.0.1:8000",
+    "check": "python manage.py check",
+    "test": "python manage.py test",
+    "test-verbose": "python manage.py test --verbosity=2",
+    "shell": "python manage.py shell",
+    "collectstatic": "python manage.py collectstatic --noinput",
+    "createsuperuser": "python manage.py createsuperuser",
+    "showmigrations": "python manage.py showmigrations",
+    "sqlmigrate": "python manage.py sqlmigrate api 0001",
+    "flush": "python manage.py flush --noinput",
+    "loaddata": "python manage.py loaddata",
+    "dumpdata": "python manage.py dumpdata --indent=2",
+    "dbshell": "python manage.py dbshell",
+    "startapp": "python manage.py startapp",
+    
+    "setup": "npm run install-deps && npm run makemigrations && npm run migrate",
+    "dev": "npm run runserver-dev",
+    "prod": "npm run collectstatic && npm run runserver",
+    "reset-db": "npm run flush && npm run migrate && npm run createsuperuser",
+    "check-all": "npm run check && npm run test",
+    
+    "lint": "flake8 .",
+    "format": "black .",
+    "format-check": "black --check .",
+    
+    "backup-db": "python -c \"import shutil; shutil.copy('db.sqlite3', f'db_backup_{__import__('datetime').datetime.now().strftime(\\\"%Y%m%d_%H%M%S\\\")}.sqlite3')\"",
+    "logs": "tail -f logs/django.log",
+    "clean": "find . -name '*.pyc' -delete && find . -name '__pycache__' -type d -exec rm -rf {} + 2>/dev/null || true"
+  },
+  "keywords": [
+    "django",
+    "banking-api",
+    "secure-cipher",
+    "fintech",
+    "cryptocurrency"
+  ],
+  "author": "SecureCipher Team",
+  "license": "MIT",
+  "engines": {
+    "python": ">=3.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/securecipher-banking-api.git"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}

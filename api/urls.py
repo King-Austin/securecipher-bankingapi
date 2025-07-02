@@ -27,4 +27,8 @@ urlpatterns = [
     
     # Message endpoints
     path('messages/<int:pk>/read/', views.mark_message_read, name='mark-message-read'),
+    
+    # Middleware endpoints
+    path('middleware/public-key/', views.middleware_public_key, name='middleware-public-key'),
+    path('secure/gateway/', views.secure_gateway, name='secure-gateway'),
 ]

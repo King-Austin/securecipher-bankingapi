@@ -1,11 +1,26 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class MiddlewareKey(models.Model):
+    """Store middleware ECDSA and ECDH key pairs"""
+    ecdsa_private_key = models.TextField(help_text="ECDSA private key in PEM format")
+    ecdsa_public_key = models.TextField(help_text="ECDSA public key in PEM format")
+    ecdh_private_key = models.TextField(help_text="ECDH private key in PEM format")
+    ecdh_public_key = models.TextField(help_text="ECDH public key in PEM format")
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        verbose_name = "Middleware Key"
+        verbose_name_plural = "Middleware Keys"
+    
+    def __str__(self):
+        return f"Middleware Keys (created: {self.created_at})"
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     phone = models.CharField(max_length=20, blank=True)
-    bvn = models.CharField(max_length=50, blank=True)
-    nin = models.CharField(max_length=50, blank=True)
+    bvn = models.CharField(max_length=50, blank=True, unique=True)
+    nin = models.CharField(max_length=50, blank=True, unique=True)
     date_of_birth = models.DateField(null=True, blank=True)
     address = models.TextField(blank=True)
     occupation = models.CharField(max_length=100, blank=True)
